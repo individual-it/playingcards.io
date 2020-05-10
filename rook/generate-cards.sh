@@ -46,10 +46,16 @@ function create_card() {
     $cardDestFolder/$2-$1-tmp.png
 
   if [ "$3" != "" ]; then
+    rectangleXStart=133
+    if [ "$3" -lt 10 ]; then
+      ((rectangleXEnd=rectangleXStart+60))
+    else
+      ((rectangleXEnd=rectangleXStart+100))
+    fi
     convert $cardDestFolder/$2-$1-tmp.png \
       -fill $1 \
       -stroke black \
-      -draw "rectangle 133,48 232,115" \
+      -draw "rectangle ${rectangleXStart},48 ${rectangleXEnd},115" \
       -fill white \
       -gravity NorthWest \
       -font Bookman-DemiItalic \
@@ -92,6 +98,9 @@ while [ $counter -le 14 ]; do
       ;;
     "1")
       points=15
+      ;;
+    "5")
+      points=5
       ;;
     *)
       points=""
