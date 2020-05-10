@@ -25,7 +25,7 @@ while [[ $# -gt 0 ]]; do
   shift
 done
 
-echo "image;" >$cardDestFolder/$csvFileName
+echo "label;image;" >$cardDestFolder/$csvFileName
 
 #create normal cards
 #$1 color
@@ -80,7 +80,7 @@ function create_card() {
     $cardDestFolder/$2-$1.png
 
   rm $cardDestFolder/$2-$1-tmp.png
-  echo $2-$1.png
+  echo $2-$1
 }
 
 colors=(
@@ -106,8 +106,8 @@ while [ $counter -le 14 ]; do
       points=""
       ;;
     esac
-    fileName=$(create_card $color $counter $points)
-    echo $rootURL$fileName";" >>$cardDestFolder/$csvFileName
+    label=$(create_card $color $counter $points)
+    echo $label";"$rootURL$label.png";" >>$cardDestFolder/$csvFileName
   done
   ((counter++))
 done
@@ -143,4 +143,4 @@ convert \
   $cardDestFolder/ROOK.png
 
 rm $cardDestFolder/ROOK-tmp.png
-echo $rootURL"ROOK.png;" >>$cardDestFolder/$csvFileName
+echo "ROOK;"$rootURL"ROOK.png;" >>$cardDestFolder/$csvFileName
