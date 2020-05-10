@@ -1,9 +1,9 @@
-#card sets for playingcards.io
+# card sets for playingcards.io
 
 This repo contains sets of cards for http://playingcards.io and scripts to create them.
 (So far only [ROOK](https://en.wikipedia.org/wiki/Rook_(card_game)))
 
-##Use pre-created deck
+## Use pre-created deck
 ![HOWTO Video](https://raw.githubusercontent.com/individual-it/playingcards.io/master/howto.gif)
 1. Download the CVS file to your computer e.g. [ROOK](https://raw.githubusercontent.com/individual-it/playingcards.io/master/rook/cards/import.csv)
 2. Go to [playingcards.io](http://playingcards.io/)
@@ -20,7 +20,7 @@ e.g. you can create a new card-holder for the nest, add counters for the points,
 
 You are ready to go!
 
-##Modify the deck
+## Modify the deck
 1. clone or download the whole repo
 2. run `generate-cards.sh`. Parameters:
    1. `-dest /folder/on/your/computer` - where to save the deck
@@ -32,9 +32,9 @@ You are ready to go!
 7. upload the images to the cloud storage, you have set with `-root`
 9. follow "Use pre-created deck" to import the deck to [playingcards.io](http://playingcards.io/)
 
-##Ideas/Issues
+## Ideas/Issues
 please open an [issue](https://github.com/individual-it/playingcards.io/issues)
 
-##Create more decks
+## Create more decks
 Do you want to create more different decks? E.g. I know that people play ROOK in a lot of different variants. Please make a script and submit a [pull-request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 Please make sure the game idea, and the design is in teh public domain. 
