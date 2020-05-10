@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rootURL="https://my-domain-where-the-cards-are-stored/"
-
+cardDestFolder="."
 csvFileName="import.csv"
 
 while [[ $# -gt 0 ]]; do
@@ -9,6 +9,10 @@ while [[ $# -gt 0 ]]; do
   case ${key} in
   -dest)
     cardDestFolder="$2"
+    shift
+    ;;
+  -root)
+    rootURL="$2"
     shift
     ;;
   *)
@@ -20,11 +24,6 @@ while [[ $# -gt 0 ]]; do
   esac
   shift
 done
-
-if [ -z "${cardDestFolder}" ]
-then
-  cardDestFolder="."
-fi
 
 echo "image;" > $cardDestFolder/$csvFileName
 
