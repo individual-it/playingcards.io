@@ -33,34 +33,34 @@ echo "image;" >$cardDestFolder/$csvFileName
 #$3 points
 function create_card() {
   convert \
-    -size 412x60 \
+    -size 412x120 \
     xc:white \
     -stroke black \
     -font Bookman-DemiItalic \
-    -pointsize 70 \
+    -pointsize 100 \
     -fill $1 \
     -gravity NorthWest \
     -draw "text 0,0 '$2'" \
-    -pointsize 30 \
-    -draw "text 150,0 '$1'" \
+    -pointsize 50 \
+    -draw "text 135,0 '$1'" \
     $cardDestFolder/$2-$1-tmp.png
 
   if [ "$3" != "" ]; then
     convert $cardDestFolder/$2-$1-tmp.png \
       -fill $1 \
       -stroke black \
-      -draw "rectangle 148,28 192,55" \
+      -draw "rectangle 133,48 232,115" \
       -fill white \
       -gravity NorthWest \
       -font Bookman-DemiItalic \
-      -pointsize 30 \
-      -draw "text 150,30 '$3'" \
+      -pointsize 70 \
+      -draw "text 135,50 '$3'" \
       $cardDestFolder/$2-$1-tmp.png
   fi
   convert \
     -size 412x640 \
     xc:white \
-    -draw "image over 40,40 0,0 '${cardDestFolder}/${2}-${1}-tmp.png'" \
+    -draw "image over 15,15 0,0 '${cardDestFolder}/${2}-${1}-tmp.png'" \
     -stroke black \
     -font Bookman-Demi \
     -fill $1 \
@@ -70,7 +70,7 @@ function create_card() {
     -fill none \
     -draw "polyline 100,200 100,440 312,440 312,200 100,200" \
     -gravity SouthEast \
-    -draw "rotate 180 image over 380,20 0,0 '${cardDestFolder}/${2}-${1}-tmp.png'" \
+    -draw "rotate 180 image over 405,85 0,0 '${cardDestFolder}/${2}-${1}-tmp.png'" \
     $cardDestFolder/$2-$1.png
 
   rm $cardDestFolder/$2-$1-tmp.png
