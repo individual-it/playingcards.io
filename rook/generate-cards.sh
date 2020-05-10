@@ -25,28 +25,27 @@ while [[ $# -gt 0 ]]; do
   shift
 done
 
-echo "image;" > $cardDestFolder/$csvFileName
+echo "image;" >$cardDestFolder/$csvFileName
 
 #create normal cards
 #$1 color
 #$2 number
 #$3 points
-function create_card {
-    convert \
-      -size 412x60 \
-      xc:white \
-      -stroke black \
-      -font Bookman-DemiItalic \
-      -pointsize 70 \
-      -fill $1 \
-      -gravity NorthWest \
-      -draw "text 0,0 '$2'" \
-      -pointsize 30 \
-      -draw "text 150,0 '$1'" \
+function create_card() {
+  convert \
+    -size 412x60 \
+    xc:white \
+    -stroke black \
+    -font Bookman-DemiItalic \
+    -pointsize 70 \
+    -fill $1 \
+    -gravity NorthWest \
+    -draw "text 0,0 '$2'" \
+    -pointsize 30 \
+    -draw "text 150,0 '$1'" \
     $cardDestFolder/$2-$1-tmp.png
 
-  if [ "$3" != "" ]
-  then
+  if [ "$3" != "" ]; then
     convert $cardDestFolder/$2-$1-tmp.png \
       -fill $1 \
       -stroke black \
@@ -59,25 +58,24 @@ function create_card {
       $cardDestFolder/$2-$1-tmp.png
   fi
   convert \
-      -size 412x640 \
-      xc:white \
-      -draw "image over 40,40 0,0 '${cardDestFolder}/${2}-${1}-tmp.png'" \
-      -stroke black \
-      -font Bookman-Demi \
-      -fill $1 \
-      -gravity center \
-      -pointsize 150 \
-      -draw "text 0,0 '$2'" \
-      -fill none \
-      -draw "polyline 100,200 100,440 312,440 312,200 100,200" \
-      -gravity SouthEast \
-      -draw "rotate 180 image over 380,20 0,0 '${cardDestFolder}/${2}-${1}-tmp.png'" \
-      $cardDestFolder/$2-$1.png
+    -size 412x640 \
+    xc:white \
+    -draw "image over 40,40 0,0 '${cardDestFolder}/${2}-${1}-tmp.png'" \
+    -stroke black \
+    -font Bookman-Demi \
+    -fill $1 \
+    -gravity center \
+    -pointsize 150 \
+    -draw "text 0,0 '$2'" \
+    -fill none \
+    -draw "polyline 100,200 100,440 312,440 312,200 100,200" \
+    -gravity SouthEast \
+    -draw "rotate 180 image over 380,20 0,0 '${cardDestFolder}/${2}-${1}-tmp.png'" \
+    $cardDestFolder/$2-$1.png
 
   rm $cardDestFolder/$2-$1-tmp.png
   echo $2-$1.png
 }
-
 
 colors=(
   RED
@@ -86,23 +84,21 @@ colors=(
   GREEN
 )
 counter=1
-while [ $counter -le 14 ]
-do
-  for color in "${colors[@]}"
-  do
+while [ $counter -le 14 ]; do
+  for color in "${colors[@]}"; do
     case "$counter" in
     "10" | "14")
-        points=10
-        ;;
+      points=10
+      ;;
     "1")
-        points=15
-        ;;
+      points=15
+      ;;
     *)
-        points=""
-        ;;
+      points=""
+      ;;
     esac
     fileName=$(create_card $color $counter $points)
-    echo $rootURL$fileName";" >> $cardDestFolder/$csvFileName
+    echo $rootURL$fileName";" >>$cardDestFolder/$csvFileName
   done
   ((counter++))
 done
@@ -119,23 +115,23 @@ convert \
   -draw "fill yellow text 40,0 'O'" \
   -draw "fill red text 80,0 'O'" \
   -draw "fill black text 120,0 'K'" \
-$cardDestFolder/ROOK-tmp.png
+  $cardDestFolder/ROOK-tmp.png
 
 convert \
-    -size 412x640 \
-    xc:white \
-    -stroke black \
-    -strokewidth 10 \
-    -font Bookman-Demi \
-    -fill blue \
-    -gravity center \
-    -pointsize 150 \
-    -draw "text 0,0 '20'" \
-    -fill none \
-    -draw "circle 206,320 70,320" \
-    -draw "image over 0,-165 0,0 '${cardDestFolder}/ROOK-tmp.png'" \
-    -draw "rotate 180 image over -165,-206 0,0 '${cardDestFolder}/ROOK-tmp.png'" \
-    $cardDestFolder/ROOK.png
+  -size 412x640 \
+  xc:white \
+  -stroke black \
+  -strokewidth 10 \
+  -font Bookman-Demi \
+  -fill blue \
+  -gravity center \
+  -pointsize 150 \
+  -draw "text 0,0 '20'" \
+  -fill none \
+  -draw "circle 206,320 70,320" \
+  -draw "image over 0,-165 0,0 '${cardDestFolder}/ROOK-tmp.png'" \
+  -draw "rotate 180 image over -165,-206 0,0 '${cardDestFolder}/ROOK-tmp.png'" \
+  $cardDestFolder/ROOK.png
 
 rm $cardDestFolder/ROOK-tmp.png
-echo $rootURL"ROOK.png;" >> $cardDestFolder/$csvFileName
+echo $rootURL"ROOK.png;" >>$cardDestFolder/$csvFileName
