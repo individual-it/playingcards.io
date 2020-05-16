@@ -96,9 +96,6 @@ while [ $counter -le 14 ]; do
     "10" | "14")
       points=10
       ;;
-    "1")
-      points=15
-      ;;
     "5")
       points=5
       ;;
