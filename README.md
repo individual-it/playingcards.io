@@ -5,7 +5,7 @@ This repo contains sets of cards for http://playingcards.io and scripts to creat
 
 ## Use pre-created deck
 ![HOWTO Video](https://raw.githubusercontent.com/individual-it/playingcards.io/master/howto.gif)
-1. Download the CVS file to your computer e.g. [ROOK](https://raw.githubusercontent.com/individual-it/playingcards.io/master/rook/cards/import.csv)
+1. Download the CVS file to your computer e.g. [ROOK](https://raw.githubusercontent.com/individual-it/playingcards.io/master/rook/default/cards/import.csv)
 2. Go to [playingcards.io](http://playingcards.io/)
 3. Click on "Other/Custom"
 4. Start the Game and enter the room
